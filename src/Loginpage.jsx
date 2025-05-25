@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import { Input } from 'postcss';
 function Loginpage(){
@@ -16,20 +17,24 @@ function Loginpage(){
             return;
         }
         try{
-            const response= await axios.post("http://localhost:5000/api/auth/login",{
+            const response= await axios.post("http://localhost:8888/api/auth/login",{
                     "email":Email,
                     "password":password
                 
             });
 
             const token = response.data.token;
-            console.log("✅ Token from backend:", token);
+            Cookies.set('token', token, { expires: 7 });
             toast.success("Login SuccessFully ✅");
+            
+            setEmail("");
+            setPassword("");
 
         }
         catch(err){
-            console.error("❌ Login failed:", err);
-            toast.error("Failed",err);
+            console.error("❌ Login failed:"+ err);
+            const errorMessage = err?.response?.data?.message || "Failed to Login";
+            toast.error(errorMessage);
         }
     }
     return(

@@ -22,12 +22,22 @@ function App() {
 
   return (
     <>
-    <div>
-      <h2>Docker Compose</h2>
+    <div style={{ width: '100%' }}>
+      <h2 className="Docker-Title">Docker Compose</h2>
     </div>
-    <div>
+    <div >
       {loginPage?<Loginpage />:<SignUp/>}
-    {loginPage ? <label> Don't have a account?<a onClick={HandleSignUp}>Register</a></label>:<label>Already have a account? <a onClick={HandleSignUp}>Login</a></label>}
+      <br/>
+      {loginPage ? (
+      <label className="Account-swap-login">
+        Don't have an account? <a onClick={HandleSignUp}>Register</a>
+      </label>
+      ) : (
+        <label className="Account-swap-login">
+          Already have an account? <a onClick={HandleSignUp}>Login</a>
+        </label>
+      )}
+
     </div>
     </>
   )

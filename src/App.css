@@ -44,6 +44,9 @@
   border:2px solid black;
   padding: 20px;
   border-radius: 15px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.15);
+  background: white;
+
 }
 .login-textfield{
   margin-left: 20px;
@@ -61,4 +64,33 @@
 }
 .Login-button:hover{
   background: rgba(0, 0, 0, 0.068);
+}
+
+.Docker-Title{
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 50px;
+}
+.Account-swap-login {
+  padding: 10px;
+  font-size: 16px;  /* or whatever size you want */
+  color: #333;
+  padding: 10px;
+  /* add any other styles */
+}
+
+.Account-swap-login a {
+  cursor: pointer;
+  color: blue;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.Account-swap-login a:hover{
+  cursor: pointer;
+  color: rgba(59, 59, 255, 0.582);
+  font-size: 18px;
+  text-decoration: underline;
 }
