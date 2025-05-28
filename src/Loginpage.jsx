@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 import { Input } from 'postcss';
 function Loginpage(){
@@ -21,12 +20,14 @@ function Loginpage(){
                     "email":Email,
                     "password":password
                 
+            },{
+                withCredentials: true
             });
 
-            const token = response.data.token;
-            Cookies.set('token', token, { expires: 7 });
+            // const token = response.data.token;
+            // Cookies.set('token', token, { expires: 7 });
             toast.success("Login SuccessFully ✅");
-            
+           
             setEmail("");
             setPassword("");
 

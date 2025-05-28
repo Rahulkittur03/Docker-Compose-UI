@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 import { Input } from 'postcss';
 function SignUp(){
@@ -25,8 +24,6 @@ function SignUp(){
                         "password":password
                     
                 });
-                
-                const token = response.data.token;
                 const message = response.data.message;               
                 toast.success(message);
 
@@ -34,9 +31,6 @@ function SignUp(){
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
-                
-                Cookies.set('token', token, { expires: 7 });
-                console.log("cookie stored"+document.cookie);
             }
             catch(err){
                 const errorMessage = err?.response?.data?.message || "Failed to Login";
