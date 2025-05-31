@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,  Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import Loginpage from './Loginpage.jsx'
 import SignUp from './SignUp.jsx'
+import Home from './Home.jsx'
 
 import './App.css'
 
@@ -9,38 +10,16 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [loginPage,setloginPage] =useState(true);
-
-
-  function HandleSignUp(){
-    if(loginPage){
-      setloginPage(false);
-    }
-    else{
-      setloginPage(true);
-    }
-  }
-
-  return (
-    <>
+  return (<Router>
     <div style={{ width: '100%' }}>
       <h2 className="Docker-Title">Docker Compose</h2>
     </div>
-    <div >
-      {loginPage?<Loginpage />:<SignUp/>}
-      <br/>
-      {loginPage ? (
-      <label className="Account-swap-login">
-        Don't have an account? <a onClick={HandleSignUp}>Register</a>
-      </label>
-      ) : (
-        <label className="Account-swap-login">
-          Already have an account? <a onClick={HandleSignUp}>Login</a>
-        </label>
-      )}
-
-    </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Loginpage />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/Home" element={<Home />} />
+    </Routes>
+  </Router>
   )
 }
 

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { Input } from 'postcss';
@@ -30,7 +31,7 @@ function Loginpage(){
            
             setEmail("");
             setPassword("");
-
+            <link to='/Home'/>
         }
         catch(err){
             console.error("❌ Login failed:"+ err);
@@ -41,14 +42,17 @@ function Loginpage(){
     return(
         <>
             <div className="Login-Container">
-               
                 <h3>Login</h3>
                 <input required value ={Email} type="text" placeholder='Enter Email ID' className="login-textfield" onChange={(e)=>setEmail(e.target.value)}/><br/>
                 <input required value ={password} type="password" placeholder='Enter Passoword' className="login-textfield" onChange={(e)=>setPassword(e.target.value)}/>
                 <br/>
                 <button className="Login-button" onClick={HandleLogin}>Login</button>
+                
                 <ToastContainer />
             </div>
+            <label className="Account-swap-login">
+                        Don't have an account? <Link to="/signup">Register</Link>
+            </label>
         </>
     )
 

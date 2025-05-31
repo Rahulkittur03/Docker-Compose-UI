@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { Input } from 'postcss';
@@ -26,11 +27,10 @@ function SignUp(){
                 });
                 const message = response.data.message;               
                 toast.success(message);
-
-                
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
+                <link to='/Home'/>
             }
             catch(err){
                 const errorMessage = err?.response?.data?.message || "Failed to Login";
@@ -49,6 +49,9 @@ function SignUp(){
                 <button className="Login-button" onClick={HandleSignUp}>Sign up</button>
                 <ToastContainer />
             </div>
+            <label className="Account-swap-login">
+                Already have an account? <Link to="/">Login</Link>
+            </label>
         </>
     )
 
