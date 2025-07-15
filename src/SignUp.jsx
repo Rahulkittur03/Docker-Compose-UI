@@ -21,7 +21,7 @@ function SignUp(){
             return;
         }
             try{
-                const response= await axios.post("http://localhost:8888/api/auth/signup",{
+                const response= await axios.post("http://103.152.114.177:8080/api/auth/signup",{
                         "email":Email,
                         "password":password
                     
