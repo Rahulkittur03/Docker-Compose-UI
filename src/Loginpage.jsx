@@ -27,7 +27,7 @@ function Loginpage(){
             return;
         }
         try{
-            const response= await axios.post("http://103.152.114.177:8080/api/auth/login",{
+            const response= await axios.post("https://docker-vibe-check.duckdns.org:8080/api/auth/login",{
                     "email":Email,
                     "password":password
                 
