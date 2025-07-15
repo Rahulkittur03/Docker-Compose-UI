@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import { Input } from 'postcss';
@@ -9,6 +9,7 @@ function SignUp(){
     const [Email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [confirmPassword,setConfirmPassword]=useState("");
+    const navigate = useNavigate();
 
     async function HandleSignUp(){
         if(Email===""||password===""||confirmPassword===""){
@@ -30,10 +31,11 @@ function SignUp(){
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
-                <link to='/Home'/>
+                setTimeout(()=>navigate('/Home',{ replace: true }),3000)
             }
             catch(err){
                 const errorMessage = err?.response?.data?.message || "Failed to Login";
+                console.log(err);
                 toast.error(errorMessage);
             }
 

@@ -1,14 +1,24 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import { Input } from 'postcss';
 function Loginpage(){
     const [Email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const [error,setError]=useState(""); 
+    const navigate=useNavigate();
+    
+    useEffect(()=>{
+        document.title = "Login - MyApp";
+        const token=Cookies.get('token');
+        console.log('token',token);
+        if(token){
+            navigate('/home');
+        }
+    },[])
     
     
     async function HandleLogin(){
@@ -31,7 +41,7 @@ function Loginpage(){
            
             setEmail("");
             setPassword("");
-            <link to='/Home'/>
+            setTimeout(()=>navigate('/Home',{ replace: true }),3000)
         }
         catch(err){
             console.error("❌ Login failed:"+ err);
